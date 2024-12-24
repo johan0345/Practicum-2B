@@ -1,3 +1,5 @@
+package main;
+
 public class Voetbalclub {
     private String naam;
     private int aantalGewonnen;
@@ -6,7 +8,11 @@ public class Voetbalclub {
 
     // Verwijder spaties
     public Voetbalclub(String naam) {
-        this.naam = naam.trim();
+        if (naam == null || naam.trim().isEmpty()) {
+            this.naam = "FC";
+        } else {
+            this.naam = naam.trim();
+        }
     }
 
     public void verwerkResultaat(char ch) {
@@ -16,6 +22,9 @@ public class Voetbalclub {
             aantalGelijk++;
         } else if (ch == 'v') {
             aantalVerloren++;
+        } else {
+            // Foutieve invoer
+            System.out.println("Foutieve invoer: " + ch);
         }
     }
 
